@@ -56,33 +56,29 @@ public class EnemySpawner : MonoBehaviour
         float cameraHeight = 2f * mainCamera.orthographicSize;
         float cameraWidth = cameraHeight * mainCamera.aspect;
 
-        float x, y, z;
+        float x = 0f;
+        float y = 0.5f;
+        float z = 0f;
 
         switch (Random.Range(0, 4))
         {
-            case 0: 
+            case 0:
                 x = Random.Range(-cameraWidth / 2, cameraWidth / 2);
-                z = cameraHeight / 2 + 4;
+                z = mainCamera.transform.position.z + cameraHeight / 2 + 5f;
                 break;
-            case 1: 
+            case 1:
                 x = Random.Range(-cameraWidth / 2, cameraWidth / 2);
-                z = -cameraHeight / 2 - 4;
+                z = mainCamera.transform.position.z - cameraHeight / 2 - 5f;
                 break;
-            case 2: 
-                x = -cameraWidth / 2 - 4;
+            case 2:
+                x = mainCamera.transform.position.x - cameraWidth / 2 - 5f;
                 z = Random.Range(-cameraHeight / 2, cameraHeight / 2);
                 break;
             case 3:
-                x = cameraWidth / 2 + 4;
+                x = mainCamera.transform.position.x + cameraWidth / 2 + 5f;
                 z = Random.Range(-cameraHeight / 2, cameraHeight / 2);
                 break;
-            default:
-                x = 0;
-                z = 0;
-                break;
         }
-
-        y = 0.5f;
 
         return new Vector3(x, y, z);
     }
